@@ -1,0 +1,47 @@
+<!-- INCLUDE overall_header.html -->
+<h1 style="text-align:center;font-size:3em">Welcome to UEGA</h1>
+
+<div id=new_user_container>
+	<div id=new_user_image>
+		{RAND_IMAGE}
+	</div>
+	<div id=new_user_welcome2>
+	  <h4>What is UEGA?</h4>
+	  <p>UEGA (Urban Exploration Group Australia) is an online community dedicated to all varieties of urban exploration. <a href="forums/ucp.php?mode=register">Create an account</a> to access the forums, view photos/write-ups and participate in the community</p>
+
+<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->
+        <form method="post" action="{S_LOGIN_ACTION}" class="headerspace">
+        <header><h4><a href="{U_LOGIN_LOGOUT}"><i class="fa fa-sign-in"></i>&nbsp;{L_LOGIN_LOGOUT}</a><!-- IF S_REGISTER_ENABLED -->&nbsp;<!-- ENDIF --></h4></header>
+                <fieldset class="quick-login">
+                        <input type="text" placeholder="{L_USERNAME}" name="username" id="username" size="10" class="inputbox" title="{L_USERNAME}">
+                        <input type="password" placeholder="{L_PASSWORD}" name="password" id="password" size="10" class="inputbox" title="{L_PASSWORD}">
+                        <!-- IF S_AUTOLOGIN_ENABLED -->
+                        <label for="autologin">{L_LOG_ME_IN} <input type="checkbox" name="autologin" id="autologin"></label>
+                        <!-- ENDIF -->
+                </fieldset>
+		<fieldset class="submit-buttons">
+                        <input type="submit" name="login" value="{L_LOGIN}" class="button1">
+                        {S_LOGIN_REDIRECT}
+		</fieldset>
+        </form>
+<!-- ENDIF -->
+
+
+
+
+
+  </div>
+</div>
+<!-- BEGIN announcements -->
+Title: {announcements.TOPIC_TITLE}<br>
+Author: {announcements.TOPIC_AUTHOR}<br>
+Date: {announcements.TOPIC_DATE}<br>
+Last post: {announcements.TOPIC_LAST_POST}<br>
+Topic link: {announcements.TOPIC_LINK}<br><br><br>
+<!-- END announcements -->
+
+
+
+
+
+<!-- INCLUDE overall_footer.html -->

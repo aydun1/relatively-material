@@ -1,0 +1,58 @@
+<!-- IF S_TYPE == 1 -->
+
+
+
+	<fieldset class="fields2">
+<!-- ENDIF -->
+
+<!-- IF S_RECAPTCHA_AVAILABLE -->
+
+	<span><label><strong>{L_CONFIRM_CODE}</strong></label>:<br><span>{L_RECAPTCHA_EXPLAIN}</span></span>
+	<div id="recaptcha_widget">
+
+
+
+
+
+
+   <div id="recaptcha_image" style="clear:inline-block;"></div>
+
+   <span class="recaptcha_only_if_audio">Enter the numbers you hear:</span>
+
+   <input type="text" id="recaptcha_response_field" class="inputbox" name="recaptcha_response_field">
+
+   <div><a href="javascript:Recaptcha.reload()">Get another CAPTCHA</a></div>
+   <div class="recaptcha_only_if_image"><a href="javascript:Recaptcha.switch_type('audio')">Get an audio CAPTCHA</a></div>
+   <div class="recaptcha_only_if_audio"><a href="javascript:Recaptcha.switch_type('image')">Get an image CAPTCHA</a></div>
+
+   <div><a href="javascript:Recaptcha.showhelp()">Help</a></div>
+
+		<script>
+		var RecaptchaOptions = {
+			lang : '{LA_RECAPTCHA_LANG}',
+			theme : 'custom',
+			tabindex : <!-- IF $CAPTCHA_TAB_INDEX -->{$CAPTCHA_TAB_INDEX}<!-- ELSE -->10<!-- ENDIF -->
+		};
+		</script>
+
+		<script src="{RECAPTCHA_SERVER}/challenge?k={RECAPTCHA_PUBKEY}{RECAPTCHA_ERRORGET}"></script>
+		<noscript>
+		<div>
+			<object data="{RECAPTCHA_SERVER}/noscript?k={RECAPTCHA_PUBKEY}{RECAPTCHA_ERRORGET}" type="text/html" height="300" width="500"></object><br>
+			<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+			<input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+		</div>
+		</noscript>
+
+
+
+
+
+	</div>
+<!-- ELSE -->
+{L_RECAPTCHA_NOT_AVAILABLE}
+<!-- ENDIF -->
+
+<!-- IF S_TYPE == 1 -->
+	</fieldset>
+<!-- ENDIF -->

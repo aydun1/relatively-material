@@ -1,0 +1,297 @@
+dd.posts, dd.topics, dd.views{
+display: none;
+}
+.section-index ul.topiclist dt, .section-viewforum ul.topiclist dt, .section-search ul.topiclist dt{
+width:69%;
+}
+.section-index dd.lastpost, .section-viewforum dd.lastpost, .section-search dd.lastpost{
+width:21%;
+}
+
+.display-options{
+display:none;
+}
+select{
+width:40%;
+}
+#page-body{
+margin:0;
+padding:1em 0.5em;
+}
+#navbar{
+margin:0;
+border-radius:0;
+}
+
+.topic-actions{
+margin: 0 -5px;
+margin-right:0;
+padding: 0 5px;
+}
+#name_block h1 {
+margin-bottom: 0.5em;
+}
+
+
+#logodesc  {
+margin:0 0;
+padding-top:10px;
+}
+
+.postbody{
+margin-left:20%;
+}
+
+.postprofile{
+width:20%;
+}
+.postprofile dd img{
+width: auto !important;
+height: auto !important;
+max-width: 32px;
+}
+
+table.table1 .info div a {
+word-break: break-all;
+}
+
+
+.inner .fields1 dt {
+width:auto;
+}
+.inner .fields1 dd {
+margin-left:0;
+}
+
+
+textarea, input[type="text"], input[type="password"]{
+font-size:18px !important;
+}
+.autowidth {
+width: 98% !important;
+}
+
+
+#navigation {
+min-height:0;
+width:inherit;
+position:inherit;
+margin-top:inherit;
+margin-left:0;
+float:none;
+overflow:auto;
+}
+
+#navigation ul{
+display:inline;
+}
+
+#navigation a{
+width:inherit;
+}
+
+.section-mcp .panel.bg3 > .inner, .section-ucp .panel.bg3 > .ucp-main {
+margin-left: 0;
+}
+
+#message-box, #smiley-box{
+width:inherit;
+float:none;
+}
+.alert_icons li {
+display: block;
+}
+.alert_icons {
+top:3em;
+}
+
+#new_user_container{
+margin:0;
+}
+
+#new_user_welcome2, #new_user_image{
+width:100%;
+padding:0;
+clear: right;
+}
+
+
+@media only screen and (max-width: 600px), only screen and (max-device-width: 600px)
+{
+
+
+
+
+
+.phpbb_alert {
+	width: auto;
+}
+.section-index ul.topiclist dt, .section-viewforum ul.topiclist dt, .section-search ul.topiclist dt, .section-ucp ul.topiclist dt {
+width: inherit;
+}
+
+
+li.header dl.icon dt {
+padding-right:10px;
+}
+
+
+ul.topiclist dd{
+display:none;
+}
+.section-ucp ul.topiclist dd{
+display:block;
+}
+
+ul.topiclist .row dd.lastpost{
+display:block;
+width:99%;
+text-align:right;
+}
+ul.topiclist dfn {
+	display:inline-block;
+}
+.section-ucp ul.topiclist dfn {
+	display:none;
+}
+ul.topiclist .row dd.lastpost span br{
+display:none;
+}
+
+#faqlinks .column1,#faqlinks  .column2 {
+width:inherit;
+float:none;
+margin:0;
+}
+
+#messages{
+right: 3%;
+bottom:27px;
+}
+fieldset.fields2 dd {
+margin-left: 0;
+}
+#site_nav span a {
+padding:0 0.3em;
+}
+#name_block h2.solo {
+	margin-bottom: 2em;
+}
+
+
+div.profile-icons{
+font-size:0;
+
+}
+div.profile-icons ul li{
+border:0!important;
+}
+
+div.profile-icons i{
+font-size:20px;
+padding:10px 10px 7px 10px;
+}
+.notification_list{
+right:0em!important;
+}
+
+.section-mcp .panel.bg3, .section-ucp .panel.bg3, #page-body > .panel{
+margin-left:-5px;
+margin-right:-5px;
+}
+.alert_icons {
+right:1em;
+}
+
+
+
+
+.postbody {
+margin-left:0;
+clear:left;
+border-left:0;
+}
+.postprofile {
+min-height:0;
+position:relative;
+float:none;
+background-color: #222838;
+padding:3px 6px 3px 3px;
+width:auto;
+}
+.postprofile .profile-avatar {
+margin:0;
+left:3px;
+position:absolute;
+}
+.postprofile dt {
+float:left;
+background:none !important;
+padding-left:35px;
+}
+.postprofile dd {
+text-align:right;
+}
+.profile-interest, .profile-location{
+display:none;
+}
+
+
+.postprofile .profile-custom-field, .profile-rank, .profile-thanks-given {
+display:none;
+}
+
+
+
+
+
+}
+@media only screen and (max-width: 380px), only screen and (max-device-width: 380px)
+{
+#logodesc{
+height:58px;
+padding: 0;
+text-align:left;
+background-position:center bottom -10px;
+}
+
+#logodesc > a{
+display:block;
+padding:5px 0;
+height:48px;
+}
+
+
+#sitelogo {
+padding-top: 48px;
+margin-left:5px;
+background-size:130px;
+}
+
+.alert_icons {
+right:0;
+bottom:0;
+top:0;
+background-color: rgba(0,0,0,0.4);
+padding-top:10px;
+}
+.alert_icons > li {
+display: inline-block;
+margin:0 5px;
+vertical-align: middle;
+}
+.alert_icons > li > a{
+height:38px;
+display:block;
+}
+.breadcrumbs a:first-child {
+padding-left: 10px;
+padding-right: 10px;
+}
+#navbar .navitems a {
+padding: 0 0.7em 0 0.7em;
+}
+.breadcrumbs a span {
+max-width: 80px;
+}
+}

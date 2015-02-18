@@ -1,0 +1,71 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- IF S_USER_LOGGED_IN or S_IS_BOT -->
+	<script>document.getElementById("active-home").style.backgroundColor = "#0C4256";</script>
+	<h1><a href="{U_INDEX}">Welcome to the UEGA Forums!</a></h1>
+	<div class="topic-actions">
+		<ul class="buttons">
+		<!-- IF not S_IS_BOT and U_MARK_FORUMS --><li title="Mark topics read"><a href="{U_MARK_FORUMS}" accesskey="m" data-ajax="mark_forums_read"><i class="fa fa-check"></i>&nbsp;{L_MARK_FORUMS_READ}</a><!-- ENDIF -->
+		</ul>
+	</div>
+	<!-- INCLUDE forumlist_body.html -->
+	
+	
+<!-- ELSE -->
+	<script>document.getElementById("active-login").style.backgroundColor = "#0C4256";</script>
+
+	<form method="post" action="{S_LOGIN_ACTION}" data-focus="username">
+		<div class="panel login_box">
+			<header><h4><a href="{U_LOGIN_LOGOUT}"><i class="fa fa-sign-in"></i>&nbsp;{L_LOGIN_LOGOUT}</a><!-- IF S_REGISTER_ENABLED -->&nbsp;<!-- ENDIF --></h4></header>
+			<div id="login_terms">
+			<div>
+				<p>{L_LOGIN_INFO}</p>
+				<p><strong><a href="{U_TERMS_USE}">{L_TERMS_USE}</a> | <a href="{U_PRIVACY}">{L_PRIVACY}</a></strong></p>
+			</div>
+			</div>
+
+			<fieldset class="fields1">
+				<input type="text" placeholder="{L_USERNAME}" name="username" id="username" size="10" class="inputbox" title="{L_USERNAME}">
+				<input type="password" placeholder="{L_PASSWORD}" name="password" id="password" size="10" class="inputbox" title="{L_PASSWORD}">
+				<dl>
+					<!-- IF S_AUTOLOGIN_ENABLED --><dd><label for="autologin"><input type="checkbox" name="autologin" id="autologin"> {L_LOG_ME_IN}</label></dd><!-- ENDIF -->
+					<dd><label for="viewonline"><input type="checkbox" name="viewonline" id="viewonline" tabindex="5"> {L_HIDE_ME}</label></dd>
+				</dl>
+			</fieldset>
+			<fieldset class="submit-buttons">
+				<input type="submit" name="login" value="{L_LOGIN}" class="button1">
+				{S_LOGIN_REDIRECT}
+			</fieldset>
+		</div>
+	</form>
+	
+	
+<!-- ENDIF -->
+
+
+
+<div id=stats-reg>
+<!-- IF S_DISPLAY_ONLINE_LIST -->
+	<div id=online_now>
+		<header><h4><!-- IF U_VIEWONLINE --><a href="{U_VIEWONLINE}"><i class="fa fa-desktop"></i>&nbsp;{L_WHO_IS_ONLINE}</a><!-- ELSE --><i class="fa fa-desktop"></i>&nbsp;{L_WHO_IS_ONLINE}<!-- ENDIF --></h4></header>
+		<p>{TOTAL_USERS_ONLINE} ({L_ONLINE_EXPLAIN})<br>{RECORD_USERS}<br><br>{LOGGED_IN_USER_LIST}
+		<!-- IF LEGEND --><br><em>{L_LEGEND}: {LEGEND}</em><!-- ENDIF --></p>
+	</div>
+<!-- ENDIF -->
+<!-- IF NEWEST_USER -->
+	<div id=statistics_box>
+		<header><h4><i class="fa fa-bar-chart"></i>&nbsp;{L_STATISTICS}</h4></header>
+		<p>&gt; {TOTAL_POSTS} <br> &gt; {TOTAL_TOPICS} <br> &gt; {TOTAL_USERS} <br> &gt; {NEWEST_USER}</p>
+		<div class="clear"></div>
+	</div>
+<!-- ENDIF -->
+</div>
+
+<!-- IF S_DISPLAY_BIRTHDAY_LIST and BIRTHDAY_LIST -->
+	<div id="birthday">
+		<header><h4><i class="fa fa-birthday-cake"></i>&nbsp;{L_BIRTHDAYS}</h4></header>
+		<p><!-- IF BIRTHDAY_LIST -->{L_CONGRATULATIONS}: <strong>{BIRTHDAY_LIST}</strong><!-- ELSE -->{L_NO_BIRTHDAYS}<!-- ENDIF --></p>
+	</div>
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

@@ -1,0 +1,48 @@
+<!-- IF THANKS_PROFILELIST_VIEW -->
+<div class="panel bg1">
+	<div class="inner">
+	<header><h3>{L_GRATITUDES}</h3></header>
+		<div class="column1">
+		<dl>
+			<dt><strong>{L_GIVEN}:</strong> {POSTER_GIVE_COUNT}</dt>
+			<dd>
+			<!-- IF POSTER_GIVE_COUNT -->
+			<a href="#" onclick="toggleElement( getElement('show_thanks')); return false;">{L_THANKS_LIST}</a>
+			<div id="show_thanks" style="display: none;">{THANKS}</div>
+			<!-- ENDIF -->
+			</dd>
+		</dl>
+		</div>
+		<div class="column2">
+		<dl>
+			<dt><strong>{L_RECEIVED}:</strong> {POSTER_RECEIVE_COUNT}</dt>
+			<dd>
+			<!-- IF POSTER_RECEIVE_COUNT -->
+			<a href="#" onclick="toggleElement( getElement('show_thanked')); return false;">{L_THANKS_LIST}</a>
+			<div id="show_thanked" style="display: none;">{THANKED}</div>
+			<!-- ENDIF -->
+			</dd>
+		</dl>
+		</div>
+	</div>
+</div>
+
+<script>
+function getElement(iElementId) {
+	if (document.all) {
+		return document.all[iElementId];
+	}
+	if (document.getElementById) {
+		return document.getElementById(iElementId);
+	}
+}
+
+function toggleElement(oElement) {
+	if (oElement.style.display == "none") {
+		oElement.style.display = "";
+	} else {
+		oElement.style.display = "none";
+	}
+}
+</script>
+<!-- ENDIF -->

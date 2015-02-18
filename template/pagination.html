@@ -1,0 +1,17 @@
+<nav class="pagination">
+<ul>
+<!-- BEGIN pagination -->
+	<!-- IF pagination.S_IS_PREV -->
+	<li class="previous"><a href="{pagination.PAGE_URL}" rel="prev" role="button">&#60;</a>
+	<!-- ELSEIF pagination.S_IS_CURRENT -->
+	<li class="active"><span>{pagination.PAGE_NUMBER}</span>
+	<!-- ELSEIF pagination.S_IS_ELLIPSIS -->
+	<li class="ellipsis" role="separator"><span>{L_ELLIPSIS}</span>
+	<!-- ELSEIF pagination.S_IS_NEXT -->
+	<li class="next"><a href="{pagination.PAGE_URL}" rel="next" role="button">&#62;</a>
+	<!-- ELSE -->
+	<li><a href="{pagination.PAGE_URL}" role="button">{pagination.PAGE_NUMBER}</a>
+	<!-- ENDIF -->
+<!-- END pagination -->
+</ul>
+</nav>

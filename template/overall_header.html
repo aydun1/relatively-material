@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="{S_USER_LANG}">
+<head>
+	<title><!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="{S_CONTENT_ENCODING}">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="Urban Exploration Group Australia [UEGA] The only forum group to be in when it comes to urban exploration.">
+	
+	<!-- Apple icons -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="[UEGA]">
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+	<!-- Android and generic icons -->
+	<link rel="manifest" href="/manifest.json">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#2049B0">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+
+	<!-- Microsoft icons -->
+	<meta name="msapplication-TileColor" content="#00aba9">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="application-name" content="[UEGA]">
+	{META}
+	<!--
+		phpBB style name: UEGA-responsive
+		Based on style:   prosilver (this is the default phpBB3 style)
+		Original author:  Tom Beddard ( http://www.subBlue.com/ )
+		Modified by: aydun
+	-->
+
+	<link href="https://uega.net/forums/styles/uega-responsive/theme/print.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="print" title="printonly">
+	<link href="https://uega.net/forums/styles/uega-responsive/theme/stylesheet.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="screen, projection">
+	<link href="https://uega.net/forums/styles/uega-responsive/theme/responsive.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="only screen and (max-width: 770px), only screen and (max-device-width: 770px)">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- IF U_CANONICAL --><link rel="canonical" href="{U_CANONICAL}"><!-- ENDIF -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-20672109-6', 'auto');
+		ga('require', 'displayfeatures');
+		ga('send', 'pageview');
+	</script>
+
+</head>
+
+
+<body id="phpbb" class="section-{SCRIPT_NAME}">
+
+<!-- EVENT overall_header_body_before -->
+
+<div id="wrap">
+<div id="page-header">
+	<div id="logodesc">
+		<a href="<!-- IF S_USER_LOGGED_IN or S_IS_BOT -->{U_INDEX}<!-- ELSE -->/<!-- ENDIF -->"><span id="sitelogo"></span></a>
+	<!-- IF S_REGISTERED_USER -->
+		<ul class="alert_icons">
+	<!-- IF S_DISPLAY_PM -->
+			<li id="messages"><a href="{U_PRIVATEMSGS}"><i class="fa fa-envelope-o"></i><strong>{PRIVATE_MESSAGE_COUNT}</strong></a>
+	<!-- ENDIF -->
+	<!-- IF S_NOTIFICATIONS_DISPLAY -->
+		<li class="icon-notification dropdown-container" data-skip-responsive="true"><a href="#" id="notification_list_button" class="dropdown-trigger"><i class="fa fa-bell"></i><strong>{NOTIFICATIONS_COUNT}</strong></a>
+				<!-- INCLUDE notification_dropdown.html -->
+	<!-- ENDIF -->
+	</ul>
+		<!-- ENDIF -->
+	</div>
+
+	<!-- INCLUDE navbar_header.html -->
+</div>
+
+<!-- EVENT overall_header_page_body_before -->
+
+<div id="page-body">
+	<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
+	<div id="information" class="rules">
+		<div class="inner">
+			<strong>{L_INFORMATION}{L_COLON}</strong> {L_BOARD_DISABLED}
+		</div>
+	</div>
+	<!-- ENDIF -->
+	
+	<!-- EVENT overall_header_content_before -->
