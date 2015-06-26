@@ -4,12 +4,14 @@
 	<title><!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="{S_CONTENT_ENCODING}">
-	<meta name="viewport" content="width=device-width">
-	<meta name="description" content="Urban Exploration Group Australia [UEGA] The only forum group to be in when it comes to urban exploration.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Urban Exploration Group Australia is a forum for those with an interest in 'urbex'. Share your adventures, check out photos & write-ups, and chat with others who share your interest!">
+	<link rel="search" type="application/opensearchdescription+xml" title="UEGA" href="/opensearch.xml">
 	
 	<!-- Apple icons -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-title" content="[UEGA]">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="UEGA">
 	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
@@ -31,19 +33,19 @@
 	<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
 
 	<!-- Microsoft icons -->
-	<meta name="msapplication-TileColor" content="#00aba9">
+	<meta name="application-name" content="UEGA">
 	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
-	<meta name="application-name" content="[UEGA]">
+
 	{META}
 	<!--
 		phpBB style name: UEGA-responsive
 		Based on style:   prosilver (this is the default phpBB3 style)
 		Original author:  Tom Beddard ( http://www.subBlue.com/ )
-		Modified by: aydun
+		Modified by: Aydun
 	-->
 
 	<link href="https://uega.net/forums/styles/uega-responsive/theme/print.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="print" title="printonly">
-	<link href="https://uega.net/forums/styles/uega-responsive/theme/stylesheet.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="screen, projection">
+	<link href="https://uega.net/forums/styles/uega-responsive/theme/stylesheet.css?assets_version={T_ASSETS_VERSION}1" rel="stylesheet" media="screen, projection">
 	<link href="https://uega.net/forums/styles/uega-responsive/theme/responsive.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="only screen and (max-width: 770px), only screen and (max-device-width: 770px)">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- IF U_CANONICAL --><link rel="canonical" href="{U_CANONICAL}"><!-- ENDIF -->
@@ -53,7 +55,9 @@
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		ga('create', 'UA-20672109-6', 'auto');
+		ga('create', 'UA-20672109-6', {
+		  'cookieDomain': 'www.uega.net'	
+		});
 		ga('require', 'displayfeatures');
 		ga('send', 'pageview');
 	</script>

@@ -1,88 +1,78 @@
 <div id="navbar" role="navigation">
 
 	<div class="breadcrumbs" role="menubar">
-		<!-- DEFINE $MICRODATA = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' -->
+		<!-- DEFINE $MICRODATA = ' itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"' -->
 		<!-- EVENT overall_header_breadcrumbs_before -->
-			<!-- IF U_SITE_HOME --><a class="crumb" href="{U_SITE_HOME}"{$MICRODATA} data-navbar-reference="home">{L_SITE_HOME}</a><!-- ENDIF -->
+			<!-- IF U_SITE_HOME --><span><a class="crumb" href="{U_SITE_HOME}"{$MICRODATA} data-navbar-reference="home">{L_SITE_HOME}</a></span><!-- ENDIF -->
 			<!-- EVENT overall_header_breadcrumb_prepend -->
-			<a id="active-home" class="crumb" href="{U_INDEX}" accesskey="h"{$MICRODATA} data-navbar-reference="index" itemprop="url"><span itemprop="title">{L_INDEX}</span></a>
+			<div id="active-home"{$MICRODATA}>
+				<a class="crumb" href="{U_INDEX}" accesskey="h" data-navbar-reference="index" itemprop="url">
+					<span itemprop="title">{L_INDEX}</span>
+				</a>
+			</div>
 			<!-- BEGIN navlinks -->
 				<!-- EVENT overall_header_navlink_prepend -->
-				<a class="crumb" href="{navlinks.U_VIEW_FORUM}"{$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF --> itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a>
+				<div{$MICRODATA} itemprop="child">
+					<a class="crumb" href="{navlinks.U_VIEW_FORUM}" <!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF --> itemprop="url">
+						<span itemprop="title">{navlinks.FORUM_NAME}</span>
+					</a>
+				</div>
 				<!-- EVENT overall_header_navlink_append -->
 			<!-- END navlinks -->
 			<!-- EVENT overall_header_breadcrumb_append -->
 		<!-- EVENT overall_header_breadcrumbs_after -->
 	</div>
 
-
-	<ul class="navitems">
+	<ul class="navitems" role="menubar">
 	<!-- IF S_DISPLAY_SEARCH and S_USER_LOGGED_IN -->
-	
 		<li id="quick-links" class="small-icon responsive-menu dropdown-container<!-- IF not S_DISPLAY_QUICK_LINKS and not S_DISPLAY_SEARCH --> hidden<!-- ENDIF -->" data-skip-responsive="true">
 		<a href="#" class="responsive-menu-link dropdown-trigger">Links&nbsp;<i class="fa fa-caret-down"></i></a>
-			<ul class="dropdown hidden" role="menu">
+		<ul class="dropdown hidden" role="menu">
 			<!-- EVENT navbar_header_quick_links_before -->
-			<!-- IF S_DISPLAY_SEARCH -->
-				<li class="separator">
-				<!-- IF S_LOAD_UNREADS --> 
-					<li class="small-icon icon-search-unread"><a href="{U_SEARCH_UNREAD}" role="menuitem">{L_SEARCH_UNREAD}</a>
-				<!-- ENDIF -->				
-				<!-- IF S_USER_LOGGED_IN -->
-					<li class="small-icon icon-search-new"><a href="{U_SEARCH_NEW}" role="menuitem">{L_SEARCH_NEW}</a>
-				<!-- ENDIF -->					
-				
-				<!-- IF S_REGISTERED_USER -->
-					<li class="small-icon icon-search-self"><a href="{U_SEARCH_SELF}" role="menuitem">{L_SEARCH_SELF}</a>
-				<!-- ENDIF -->					
-					<li class="small-icon icon-search-unanswered"><a href="{U_SEARCH_UNANSWERED}" role="menuitem">{L_SEARCH_UNANSWERED}</a>
-					<li class="small-icon icon-search-active"><a href="{U_SEARCH_ACTIVE_TOPICS}" role="menuitem">{L_SEARCH_ACTIVE_TOPICS}</a>
-				<!-- ENDIF -->
+			<!-- IF S_LOAD_UNREADS --> 
+				<li><a href="{U_SEARCH_UNREAD}" role="menuitem">{L_SEARCH_UNREAD}</a>
+			<!-- ENDIF -->				
+				<li><a href="{U_SEARCH_NEW}" role="menuitem">{L_SEARCH_NEW}</a>
+			<!-- IF S_REGISTERED_USER -->
+				<li><a href="{U_SEARCH_SELF}" role="menuitem">{L_SEARCH_SELF}</a>
+				<!--<li><a href="search.php?author_id={CURRENT_USERID}&sr=topics&sf=firstpost" role="menuitem">Your topics</a>-->
+			<!-- ENDIF -->
 
-				<li class="separator">
+			<li><a href="{U_SEARCH_UNANSWERED}" role="menuitem">{L_SEARCH_UNANSWERED}</a>
+			<li><a href="{U_SEARCH_ACTIVE_TOPICS}" role="menuitem">{L_SEARCH_ACTIVE_TOPICS}</a>
+			<li class="separator">
+			<li><a id="active-faq" href="{U_FAQ}"><i class="fa fa-question"></i>{L_FAQ}</a>
+			<!-- IF U_MCP --><li><a href="{U_MCP}" title="{L_MCP}" role="menuitem"><i class="fa fa-gavel"></i>{L_MCP_SHORT}</a></li><!-- ENDIF -->
+			<!-- IF U_ACP --><li><a href="{U_ACP}" title="{L_ACP}" role="menuitem"><i class="fa fa-cogs"></i>{L_ACP_SHORT}</a></li><!-- ENDIF -->
 
-				<li><a id="active-faq" href="{U_FAQ}"><i class="fa fa-question"></i>{L_FAQ}</a>
-				<!-- IF U_MCP --><li class="small-icon icon-mcp" data-last-responsive="true"><a href="{U_MCP}" title="{L_MCP}" role="menuitem"><i class="fa fa-gavel"></i>{L_MCP_SHORT}</a></li><!-- ENDIF -->
-				<!-- IF U_ACP --><li class="small-icon icon-acp" data-last-responsive="true"><a href="{U_ACP}" title="{L_ACP}" role="menuitem"><i class="fa fa-cogs"></i>{L_ACP_SHORT}</a></li><!-- ENDIF -->
-
-			</ul>
-
-		
-		<!-- <li><a href="/gallery/">Gallery</a> -->
-		<li><a id="active-search" href="{U_SEARCH}">{L_SEARCH}</a><!-- ENDIF -->
-		<!-- IF S_DISPLAY_MEMBERLIST --><li><a id="active-members" href="{U_MEMBERLIST}">{L_MEMBERLIST}</a><!-- ENDIF -->
-
-
-	
-	
-	<!-- IF S_REGISTERED_USER -->
-	<li id="username_logged_in" class="<!-- IF CURRENT_USER_AVATAR --> no-bulletin<!-- ENDIF -->" data-skip-responsive="true">
-		<!-- EVENT navbar_header_username_prepend -->
-		<div class="header-profile dropdown-container">
-			<a id="active-user" href="#" class="header-avatar dropdown-trigger"><!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR} <!-- ENDIF -->{CURRENT_USERNAME_SIMPLE}&nbsp;<i class="fa fa-caret-down"></i></a>
-				<ul class="dropdown hidden" role="menu">
-					<!-- IF U_RESTORE_PERMISSIONS --><li class="small-icon icon-restore-permissions"><a href="{U_RESTORE_PERMISSIONS}">{L_RESTORE_PERMISSIONS}</a><!-- ENDIF -->
-							<!-- EVENT navbar_header_profile_list_before -->
-							<li class="small-icon icon-ucp"><a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem"><i class="fa fa-cogs"></i>{L_PROFILE}</a>
-					<li class="small-icon icon-profile"><a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem"><i class="fa fa-user"></i>{L_READ_PROFILE}</a></li>
-							<!-- EVENT navbar_header_profile_list_after -->
-							<li class="separator">
-					<li class="small-icon icon-logout"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem"><i class="fa fa-sign-out"></i>{L_LOGIN_LOGOUT}</a>
-				</ul>
-		</div>
-		<!-- EVENT navbar_header_username_append -->
-	</li>
-	<!-- ELSE -->
-	<li><a id="active-faq" href="{U_FAQ}">{L_FAQ}</a>
+		</ul>
+		<li><a id="active-search" href="{U_SEARCH}">{L_SEARCH}</a>
 	<!-- ENDIF -->
-	
-	
-	
-	
-	
-	<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT --><li><a id="active-login" href="{U_LOGIN_LOGOUT}">{L_LOGIN}</a><!-- ENDIF -->
-	<!-- IF not S_USER_LOGGED_IN and S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
-	<li><a href="{U_REGISTER}">{L_REGISTER}</a>
+	<!-- IF S_DISPLAY_MEMBERLIST --><li><a id="active-members" href="{U_MEMBERLIST}">{L_MEMBERLIST}</a><!-- ENDIF -->
+
+	<!-- IF S_REGISTERED_USER -->
+		<li id="username_logged_in" class="<!-- IF CURRENT_USER_AVATAR --> no-bulletin<!-- ENDIF -->" data-skip-responsive="true">
+			<!-- EVENT navbar_header_username_prepend -->
+			<div class="header-profile dropdown-container">
+				<a id="active-user" href="{U_PROFILE}" class="header-avatar dropdown-trigger"><!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR} <!-- ENDIF -->{CURRENT_USERNAME_SIMPLE}&nbsp;<i class="fa fa-caret-down"></i></a>
+					<ul class="dropdown hidden" role="menu">
+						<!-- IF U_RESTORE_PERMISSIONS --><li><a href="{U_RESTORE_PERMISSIONS}"><i class="fa fa-undo"></i>{L_RESTORE_PERMISSIONS}</a><!-- ENDIF -->
+						<!-- EVENT navbar_header_profile_list_before -->
+						<li><a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem"><i class="fa fa-cogs"></i>{L_PROFILE}</a>
+						<li><a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem"><i class="fa fa-user"></i>{L_READ_PROFILE}</a></li>
+						<!-- EVENT navbar_header_profile_list_after -->
+						<li class="separator">
+						<li><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem"><i class="fa fa-sign-out"></i>{L_LOGIN_LOGOUT}</a>
+					</ul>
+			</div>
+			<!-- EVENT navbar_header_username_append -->
+		</li>
+	<!-- ELSE -->
+		<li><a id="active-faq" href="{U_FAQ}">{L_FAQ}</a>
+		<li><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">{L_LOGIN_LOGOUT}</a></li>
+		<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
+			<li><a href="{U_REGISTER}">{L_REGISTER}</a>
+		<!-- ENDIF -->
 	<!-- ENDIF -->
 	</ul>
 </div>

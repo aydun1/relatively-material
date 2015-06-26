@@ -1,28 +1,38 @@
 <!-- INCLUDE ucp_header.html -->
-
+<h2>{L_TITLE}</h2>
+<div class="inner">
 <form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
 
-<h2>{L_TITLE}</h2>
 <p>{L_WATCHED_EXPLAIN}</p>
 
 <!-- IF .forumrow -->
 <div class="panel">
-	<div class="inner">
-	<ul class="topiclist">
+	<ul class="topiclist missing-column">
 		<li class="header">
 			<dl class="icon">
-				<dt>{L_WATCHED_FORUMS}</dt>
+				<dt><div class="list-inner">{L_WATCHED_FORUMS}</div></dt>
 				<dd class="lastpost">{L_LAST_POST}</dd>
 				<dd class="mark">{L_MARK}</dd>
 			</dl>
 		</li>
 	</ul>
-	<ul class="topiclist cplist">
+	<ul class="topiclist cplist missing-column">
 
 	<!-- BEGIN forumrow -->
-		<li class="row<!-- IF forumrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
+		<li class="row">
 			<dl class="icon {forumrow.FORUM_IMG_STYLE}">
-				<dt><a href="{forumrow.U_VIEWFORUM}" class="forumtitle">{forumrow.FORUM_NAME}</a><br>{forumrow.FORUM_DESC}</dt>
+				<dt>
+					<a href="{forumrow.U_VIEWFORUM}" class="icon-link"></a>
+					<div class="list-inner">
+						<a href="{forumrow.U_VIEWFORUM}" class="forumtitle">{forumrow.FORUM_NAME}</a><br>
+						{forumrow.FORUM_DESC}
+						<!-- IF forumrow.LAST_POST_TIME -->
+						<div class="responsive-show" style="display: none;">
+							{L_LAST_POST} {L_POST_BY_AUTHOR} {forumrow.LAST_POST_AUTHOR_FULL} &laquo; <a href="{topicrow.U_LAST_POST}">{forumrow.LAST_POST_TIME}</a>
+						</div>
+						<!-- ENDIF -->
+					</div>
+				</dt>
 				<dd class="lastpost"><!-- IF forumrow.LAST_POST_TIME --><span><dfn>{L_LAST_POST} </dfn>{L_POST_BY_AUTHOR} {forumrow.LAST_POST_AUTHOR_FULL}
 					<a href="{topicrow.U_LAST_POST}"><i class="fa fa-arrow-right"></i><i class="fa fa-file"></i></a>&nbsp;&nbsp;<br>{forumrow.LAST_POST_TIME}</span>
 					<!-- ELSE -->{L_NO_POSTS}<br>&nbsp;<!-- ENDIF -->
@@ -32,7 +42,6 @@
 		</li>
 	<!-- END forumrow -->
 	</ul>
-	</div>
 </div>
 <!-- ELSEIF S_FORUM_NOTIFY -->
 	<p><strong>{L_NO_WATCHED_FORUMS}</strong></p>
@@ -40,25 +49,34 @@
 
 <!-- IF .topicrow -->
 <div class="panel">
-	<div class="inner">
-	<ul class="topiclist">
+	<ul class="topiclist missing-column">
 		<li class="header">
 			<dl class="icon">
-				<dt>{L_WATCHED_TOPICS}</dt>
+				<dt><div class="list-inner">{L_WATCHED_TOPICS}</div></dt>
 				<dd class="lastpost">{L_LAST_POST}</dd>
 				<dd class="mark">{L_MARK}</dd>
 			</dl>
 		</li>
 	</ul>
-	<ul class="topiclist cplist">
+	<ul class="topiclist cplist missing-column">
 
 	<!-- BEGIN topicrow -->
-		<li class="row<!-- IF topicrow.S_TOPIC_REPORTED --> reported<!-- ELSEIF topicrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
+		<li class="row<!-- IF topicrow.S_TOPIC_REPORTED --> reported<!-- ENDIF -->">
 			<dl class="icon {topicrow.TOPIC_IMG_STYLE}">
-				<dt<!-- IF topicrow.TOPIC_ICON_IMG --> style="background-image: url({T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}); background-repeat: no-repeat;"<!-- ENDIF --> title="{topicrow.TOPIC_FOLDER_IMG_ALT}">
-					<!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}"><i class="fa fa-arrow-right"></i><i class="fa fa-file"></i></a>&nbsp;<!-- ENDIF --><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
-					<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED --><a href="{topicrow.U_MCP_QUEUE}">{topicrow.UNAPPROVED_IMG}</a> <!-- ENDIF -->
-					<!-- IF topicrow.S_TOPIC_REPORTED --><a href="{topicrow.U_MCP_REPORT}"><i class="fa fa-exclamation-triangle"></i>&nbsp;</a><!-- ENDIF -->
+				<dt<!-- IF topicrow.TOPIC_ICON_IMG --> style="background-image: url({T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG});"<!-- ENDIF --> title="{topicrow.TOPIC_FOLDER_IMG_ALT}">
+					<!-- IF topicrow.S_UNREAD_TOPIC -->
+						<a href="{topicrow.U_NEWEST_POST}" class="icon-link"></a>
+					<!-- ELSE -->
+						<a href="{topicrow.U_LAST_POST}" class="icon-link"></a>
+					<!-- ENDIF -->
+					<div class="list-inner">
+						<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
+						<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED --><a href="{topicrow.U_MCP_QUEUE}"><i class="fa fa-question"></i></a> <!-- ENDIF -->
+						<!-- IF topicrow.S_TOPIC_REPORTED --><a href="{topicrow.U_MCP_REPORT}"><i class="fa fa-exclamation-triangle"></i></a><!-- ENDIF --><br>
+						<div class="responsive-show" style="display: none;">
+							<!-- IF topicrow.ATTACH_ICON_IMG --><i class="fa fa-paperclip" title="Attachment(s)"></i><!-- ENDIF -->
+							{L_LAST_POST} {L_POST_BY_AUTHOR} {topicrow.LAST_POST_AUTHOR_FULL} &laquo; <a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{topicrow.LAST_POST_TIME}</a>
+						</div>
 						<!-- IF .topicrow.pagination -->
 						<div class="pagination">
 							<ul>
@@ -72,23 +90,21 @@
 							<!-- END pagination -->
 							</ul>
 						</div>
-						<!-- ENDIF --><br>
-					
-					
-					
-					
-					
-					<!-- IF topicrow.ATTACH_ICON_IMG -->{topicrow.ATTACH_ICON_IMG} <!-- ENDIF -->{L_POST_BY_AUTHOR} {topicrow.TOPIC_AUTHOR_FULL} &raquo; {topicrow.FIRST_POST_TIME}
+						<!-- ENDIF -->
+						<div class="responsive-hide">
+							<!-- IF topicrow.ATTACH_ICON_IMG --><i class="fa fa-paperclip" title="Attachment(s)"></i><!-- ENDIF -->
+							{L_POST_BY_AUTHOR} {topicrow.TOPIC_AUTHOR_FULL} &raquo; {topicrow.FIRST_POST_TIME}
+						</div>
+					</div>
 				</dt>
 				<dd class="lastpost"><span><dfn>{L_LAST_POST} </dfn>{L_POST_BY_AUTHOR} {topicrow.LAST_POST_AUTHOR_FULL}
-					<a href="{topicrow.U_LAST_POST}"><i class="fa fa-arrow-right"></i><i class="fa fa-file"></i></a>&nbsp;</a> <br>{topicrow.LAST_POST_TIME}</span>
+					<a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}"><i class="fa fa-arrow-right"></i><i class="fa fa-file"></i></a> <br>{topicrow.LAST_POST_TIME}</span>
 				</dd>
 				<dd class="mark"><input type="checkbox" name="t[{topicrow.TOPIC_ID}]" id="t{topicrow.TOPIC_ID}"></dd>
 			</dl>
 		</li>
 	<!-- END topicrow -->
 	</ul>
-	</div>
 </div>
 
 <!-- ELSEIF S_TOPIC_NOTIFY -->
@@ -110,4 +126,5 @@
 	</fieldset>
 <!-- ENDIF -->
 </form>
+</div>
 <!-- INCLUDE ucp_footer.html -->

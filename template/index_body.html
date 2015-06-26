@@ -6,22 +6,23 @@
 	<div class="topic-actions">
 		<ul class="buttons">
 		<!-- IF not S_IS_BOT and U_MARK_FORUMS --><li title="Mark topics read"><a href="{U_MARK_FORUMS}" accesskey="m" data-ajax="mark_forums_read"><i class="fa fa-check"></i>&nbsp;{L_MARK_FORUMS_READ}</a><!-- ENDIF -->
+
 		</ul>
 	</div>
 	<!-- INCLUDE forumlist_body.html -->
-	
-	
+
+	<!-- EVENT index_body_forumlist_body_after -->
+
 <!-- ELSE -->
 	<script>document.getElementById("active-login").style.backgroundColor = "#0C4256";</script>
 
 	<form method="post" action="{S_LOGIN_ACTION}" data-focus="username">
 		<div class="panel login_box">
 			<header><h4><a href="{U_LOGIN_LOGOUT}"><i class="fa fa-sign-in"></i>&nbsp;{L_LOGIN_LOGOUT}</a><!-- IF S_REGISTER_ENABLED -->&nbsp;<!-- ENDIF --></h4></header>
-			<div id="login_terms">
-			<div>
+			<div class="inner">
+			<div class="inner">
 				<p>{L_LOGIN_INFO}</p>
 				<p><strong><a href="{U_TERMS_USE}">{L_TERMS_USE}</a> | <a href="{U_PRIVACY}">{L_PRIVACY}</a></strong></p>
-			</div>
 			</div>
 
 			<fieldset class="fields1">
@@ -32,6 +33,7 @@
 					<dd><label for="viewonline"><input type="checkbox" name="viewonline" id="viewonline" tabindex="5"> {L_HIDE_ME}</label></dd>
 				</dl>
 			</fieldset>
+			</div>
 			<fieldset class="submit-buttons">
 				<input type="submit" name="login" value="{L_LOGIN}" class="button1">
 				{S_LOGIN_REDIRECT}
@@ -47,8 +49,8 @@
 <div id=stats-reg>
 <!-- IF S_DISPLAY_ONLINE_LIST -->
 	<div id=online_now>
-		<header><h4><!-- IF U_VIEWONLINE --><a href="{U_VIEWONLINE}"><i class="fa fa-desktop"></i>&nbsp;{L_WHO_IS_ONLINE}</a><!-- ELSE --><i class="fa fa-desktop"></i>&nbsp;{L_WHO_IS_ONLINE}<!-- ENDIF --></h4></header>
-		<p>{TOTAL_USERS_ONLINE} ({L_ONLINE_EXPLAIN})<br>{RECORD_USERS}<br><br>{LOGGED_IN_USER_LIST}
+		<header><h4><!-- IF U_ACP --><a href="{U_VIEWONLINE}"><i class="fa fa-desktop"></i>&nbsp;{L_WHO_IS_ONLINE}</a><!-- ELSE --><i class="fa fa-desktop"></i>&nbsp;{L_WHO_IS_ONLINE}<!-- ENDIF --></h4></header>
+		<p>{TOTAL_USERS_ONLINE} ({L_ONLINE_EXPLAIN})<br><br>{LOGGED_IN_USER_LIST}
 		<!-- IF LEGEND --><br><em>{L_LEGEND}: {LEGEND}</em><!-- ENDIF --></p>
 	</div>
 <!-- ENDIF -->

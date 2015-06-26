@@ -33,29 +33,28 @@
 
 <!-- IF not S_IS_BOT -->
 	<ul class="buttons">
+
 	<!-- IF S_HAS_SUBFORUM -->
 	        <li><a href="{U_MARK_FORUMS}" class="mark-read" data-ajax="mark_forums_read"><i class="fa fa-check"></i>&nbsp;{L_MARK_SUBFORUMS_READ}</a>
 	<!-- ENDIF -->
         <!-- IF S_DISPLAY_POST_INFO -->
-		<li class="<!-- IF S_IS_LOCKED -->locked-icon<!-- ELSE -->post-icon<!-- ENDIF -->" title="<!-- IF S_IS_LOCKED -->{L_FORUM_LOCKED}<!-- ELSE -->{L_POST_TOPIC}<!-- ENDIF -->"><a href="{U_POST_NEW_TOPIC}"><span></span><!-- IF S_IS_LOCKED -->{L_FORUM_LOCKED}<!-- ELSE --><i class="fa fa-file-text"></i>&nbsp;{L_POST_TOPIC}<!-- ENDIF --></a>
-		<!-- IF U_MARK_TOPICS --><li title="Mark topics read"><a href="{U_MARK_TOPICS}" class="mark" accesskey="m" data-ajax="mark_topics_read"><i class="fa fa-check"></i>&nbsp;{L_MARK_TOPICS_READ}</a><!-- ENDIF -->
-
-
-	<!-- IF TOTAL_POSTS or TOTAL_TOPICS -->
-		<!-- IF S_WATCH_FORUM_LINK --><li><a href="{S_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}"><i class="fa fa-newspaper-o"></i>&nbsp;{S_WATCH_FORUM_TITLE}</a><!-- ENDIF -->
-		<!-- IF U_WATCH_TOPIC --><li><a href="{U_WATCH_TOPIC}" title="{L_WATCH_TOPIC}"><i class="fa fa-newspaper-o"></i>&nbsp;{L_WATCH_TOPIC}</a></div><!-- ENDIF -->
-		<!-- IF U_BOOKMARK_TOPIC --><li><a href="{U_BOOKMARK_TOPIC}" title="{L_BOOKMARK_TOPIC}"><i class="fa fa-bookmark"></i>&nbsp;{L_BOOKMARK_TOPIC}</a><!-- ENDIF -->
+	<li class="<!-- IF S_IS_LOCKED -->locked-icon<!-- ELSE -->post-icon<!-- ENDIF -->"><a href="{U_POST_NEW_TOPIC}" title="<!-- IF S_IS_LOCKED -->{L_FORUM_LOCKED}<!-- ELSE -->{L_POST_TOPIC}<!-- ENDIF -->"><!-- IF S_IS_LOCKED --><i class="fa fa-lock"></i>&nbsp;{L_FORUM_LOCKED}<!-- ELSE --><i class="fa fa-file-text"></i>&nbsp;{L_POST_TOPIC}<!-- ENDIF --></a>
+	<!-- IF U_WATCH_FORUM_LINK -->
+		<li><a href="{U_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}" class="watch-topic-link" data-ajax="toggle_link" data-toggle-text="{S_WATCH_FORUM_TOGGLE}" data-toggle-url="{U_WATCH_FORUM_TOGGLE}">{S_WATCH_FORUM_TITLE}</a>
+	<!-- ENDIF -->
+ 	<!-- IF U_MARK_TOPICS -->
+		<li><a href="{U_MARK_TOPICS}" class="mark" title="{L_MARK_SUBFORUMS_READ}" accesskey="m" data-ajax="mark_topics_read"><i class="fa fa-check"></i>&nbsp;{L_MARK_TOPICS_READ}</a>
 	<!-- ENDIF -->
 	<!-- ENDIF -->
-
 	<!-- IF S_DISPLAY_SEARCHBOX -->
 		<li class="search-box">
-			<a href="#" onclick="toggleElement( getElement('dropdown_search')); return false;" title="{L_SEARCH_FORUM}"><i class="fa fa-search"></i>&nbsp;{L_SEARCH_FORUM}</a>
-			<ul id="dropdown_search" style="display:none;"><li><form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
-				<input class="inputbox search tiny" type="text" name="keywords" id="search_keywords" size="20">
-				<!--<li><button class="button2" type="submit" value="{L_SEARCH}">{L_SEARCH}</button>-->
+			<form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
+			<fieldset>
+				<input class="inputbox search tiny" type="search" name="keywords" id="search_keywords" size="20" placeholder="{L_SEARCH_FORUM}">
+				<button class="button icon-button search-icon" type="submit" title="{L_SEARCH}"><i class="fa fa-search"></i></button>
 				{S_SEARCH_LOCAL_HIDDEN_FIELDS}
-			</form></ul>
+			</fieldset>
+			</form>
 	<!-- ENDIF -->
 
 		</ul>
@@ -124,17 +123,15 @@
 
 	<!-- IF not topicrow.S_TOPIC_TYPE_SWITCH and not topicrow.S_FIRST_ROW -->
 		</ul>
-		</div>
 	</div>
 	<!-- ENDIF -->
 
 	<!-- IF topicrow.S_FIRST_ROW or not topicrow.S_TOPIC_TYPE_SWITCH -->
 		<div class="forumbg<!-- IF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) --> announcement<!-- ENDIF -->">
-		<div class="inner">
 		<ul class="topiclist">
 			<li class="header">
 				<dl class="icon">
-					<dt><!-- IF S_DISPLAY_ACTIVE -->{L_ACTIVE_TOPICS}<!-- ELSEIF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) -->{L_ANNOUNCEMENTS}<!-- ELSE -->{L_TOPICS}<!-- ENDIF --></dt>
+					<dt<!-- IF S_DISPLAY_ACTIVE --> id="active_topics"<!-- ENDIF -->><div class="list-inner"><!-- IF S_DISPLAY_ACTIVE -->{L_ACTIVE_TOPICS}<!-- ELSEIF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) -->{L_ANNOUNCEMENTS}<!-- ELSE -->{L_TOPICS}<!-- ENDIF --></div></dt>
 					<dd class="posts">{L_REPLIES}</dd>
 					<dd class="views">{L_VIEWS}</dd>
 					<dd class="lastpost"><span>{L_LAST_POST}</span></dd>
@@ -146,13 +143,30 @@
 
 		<li class="row<!-- IF topicrow.S_POST_GLOBAL --> global-announce<!-- ENDIF --><!-- IF topicrow.S_POST_ANNOUNCE --> announce<!-- ENDIF --><!-- IF topicrow.S_POST_STICKY --> sticky<!-- ENDIF --><!-- IF topicrow.S_TOPIC_REPORTED --> reported<!-- ENDIF -->">
 			<dl class="icon {topicrow.TOPIC_IMG_STYLE}">
-				<dt<!-- IF topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS --> style="background-image: url({T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}); background-repeat: no-repeat;"<!-- ENDIF --> title="{topicrow.TOPIC_FOLDER_IMG_ALT}">
+				<dt<!-- IF topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS --> style="background-image: url({T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG});"<!-- ENDIF --> title="{topicrow.TOPIC_FOLDER_IMG_ALT}">
+					<!-- IF not S_IS_BOT -->
+						<!-- IF topicrow.S_UNREAD_TOPIC -->
+							<a href="{topicrow.U_NEWEST_POST}" class="icon-link"></a>
+						<!-- ELSE -->
+							<a href="{topicrow.U_LAST_POST}" class="icon-link"></a>
+						<!-- ENDIF -->
+					<!-- ENDIF -->
 					<div class="list-inner">
 						<!-- EVENT topiclist_row_prepend -->
-						<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{topicrow.U_NEWEST_POST}">{NEWEST_POST_IMG}</a><!-- ENDIF --><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
-						<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED --><a href="{topicrow.U_MCP_QUEUE}">{topicrow.UNAPPROVED_IMG}</a> <!-- ENDIF -->
-						<!-- IF topicrow.S_TOPIC_DELETED --><a href="{topicrow.U_MCP_QUEUE}">{DELETED_IMG}</a> <!-- ENDIF -->
+						<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
+						<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED --><a href="{topicrow.U_MCP_QUEUE}"><i class="fa fa-question"></i></a> <!-- ENDIF -->
+						<!-- IF topicrow.S_TOPIC_DELETED --><a href="{topicrow.U_MCP_QUEUE}"><i class="fa fa-trash"></i></a> <!-- ENDIF -->
 						<!-- IF topicrow.S_TOPIC_REPORTED --><a href="{topicrow.U_MCP_REPORT}"><i class="fa fa-exclamation-triangle"></i></a><!-- ENDIF -->
+						<!-- IF not S_IS_BOT -->
+						<div class="responsive-show" style="display: none;">
+                                                        <!-- IF topicrow.S_HAS_POLL --><i class="fa fa-pie-chart" title="This topic has a poll."></i><!-- ENDIF -->
+                                                        <!-- IF topicrow.ATTACH_ICON_IMG --><i class="fa fa-paperclip" title="Attachment(s)"></i><!-- ENDIF -->
+							{L_LAST_POST} {L_POST_BY_AUTHOR} {topicrow.LAST_POST_AUTHOR_FULL} &laquo; <a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{topicrow.LAST_POST_TIME}</a>
+							<!-- IF topicrow.S_POST_GLOBAL and FORUM_ID != topicrow.FORUM_ID --><br>{L_POSTED} {L_IN} <a href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a><!-- ENDIF -->
+						</div>
+						<!-- IF topicrow.REPLIES --><span class="responsive-show left-box" style="display: none;">{L_REPLIES}{L_COLON} <strong>{topicrow.REPLIES}</strong></span><!-- ENDIF -->
+						<!-- ENDIF -->
+						
 						<!-- IF .topicrow.pagination -->
 						<nav class="pagination">
 							<ul>
@@ -168,17 +182,10 @@
 						</nav>
 						<!-- ENDIF -->
 						<br>
-
-						<!-- IF not S_IS_BOT -->
-						<div class="responsive-show" style="display: none;">
-							{L_LAST_POST} {L_POST_BY_AUTHOR} {topicrow.LAST_POST_AUTHOR_FULL} &laquo; <a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{topicrow.LAST_POST_TIME}</a>
-							<!-- IF topicrow.S_POST_GLOBAL and FORUM_ID != topicrow.FORUM_ID --><br />{L_POSTED} {L_IN} <a href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a><!-- ENDIF -->
-						</div>
-						<!-- IF topicrow.REPLIES --><span class="responsive-show left-box" style="display: none;">{L_REPLIES}{L_COLON} <strong>{topicrow.REPLIES}</strong></span><!-- ENDIF -->
-						<!-- ENDIF -->
+						
 						<div class="responsive-hide">
-							<!-- IF topicrow.S_HAS_POLL -->{POLL_IMG} <!-- ENDIF -->
-							<!-- IF topicrow.ATTACH_ICON_IMG -->{topicrow.ATTACH_ICON_IMG} <!-- ENDIF -->
+							<!-- IF topicrow.S_HAS_POLL --><i class="fa fa-pie-chart" title="This topic has a poll."></i><!-- ENDIF -->
+							<!-- IF topicrow.ATTACH_ICON_IMG --><i class="fa fa-paperclip" title="Attachment(s)"></i><!-- ENDIF -->
 							{L_POST_BY_AUTHOR} {topicrow.TOPIC_AUTHOR_FULL} &raquo; {topicrow.FIRST_POST_TIME}
 							<!-- IF topicrow.S_POST_GLOBAL and FORUM_ID != topicrow.FORUM_ID --> &raquo; {L_IN} <a href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a><!-- ENDIF -->
 						</div>
@@ -189,14 +196,13 @@
 				<dd class="posts">{topicrow.REPLIES} <dfn>{L_REPLIES}</dfn></dd>
 				<dd class="views">{topicrow.VIEWS} <dfn>{L_VIEWS}</dfn></dd>
 				<dd class="lastpost"><span><dfn>{L_LAST_POST} </dfn>{L_POST_BY_AUTHOR} {topicrow.LAST_POST_AUTHOR_FULL}
-					<!-- IF not S_IS_BOT --><a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}"><i class="fa fa-arrow-right"></i><i class="fa fa-file"></i></a> <!-- ENDIF --><br />{topicrow.LAST_POST_TIME}</span>
+					<!-- IF not S_IS_BOT --><a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}"><i class="fa fa-arrow-right"></i><i class="fa fa-file"></i></a> <!-- ENDIF --><br>{topicrow.LAST_POST_TIME}</span>
 				</dd>
 			</dl>
 		</li>
 
 	<!-- IF topicrow.S_LAST_ROW -->
-			</ul>
-		</div>
+		</ul>
 	</div>
 	<!-- ENDIF -->
 

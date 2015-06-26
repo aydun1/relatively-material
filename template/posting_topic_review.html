@@ -14,9 +14,9 @@
 	<div class="post bg3 post-ignore">
 		<div class="inner">
 			{topic_review_row.L_IGNORE_POST}
+		</div>
 	<!-- ELSE -->
-	<div class="post <!-- IF topic_review_row.S_ROW_COUNT is odd -->bg1<!-- ELSE -->bg2<!-- ENDIF -->">
-		<div class="inner">
+	<div class="post">
 	<!-- ENDIF -->
 		<div class="postbody" id="pr{topic_review_row.POST_ID}">
 			<header class="postheader"><span class="postdate"><i class="fa fa-file"></i>&nbsp;{topic_review_row.POST_DATE}</span></header>
@@ -36,23 +36,16 @@
 			<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE -->
 				<div id="message_{topic_review_row.POST_ID}" style="display: none;">{topic_review_row.DECODED_MESSAGE}</div>
 			<!-- ENDIF -->
+
+			<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE -->
+				<div class="profile-icons">
+				<ul class="postbuttons">
+					<li><a href="#postingbox" onclick="addquote({topic_review_row.POST_ID}, '{topic_review_row.POSTER_QUOTE}', '{LA_WROTE}');" title="{L_QUOTE} {topic_review_row.POST_AUTHOR}" class="quote-icon"><span><i class="fa fa-quote-left"></i></span></a>
+				</ul>
+				</div>
+			<!-- ENDIF -->
 		</div>
-		<!-- IF topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE -->
-		<div class="profile-icons">
-			<ul>
-			<li class="quote-icon"><a href="#postingbox" onclick="addquote({topic_review_row.POST_ID}, '{topic_review_row.POSTER_QUOTE}', '{LA_WROTE}');" title="{L_QUOTE} {topic_review_row.POST_AUTHOR}"><span><i class="fa fa-quote-left"></i>&nbsp;{L_QUOTE} {topic_review_row.POST_AUTHOR}</span></a>
-			</ul>
-			</div>
-		<!-- ENDIF -->
-		</div>
+
 	</div>
 	<!-- END topic_review_row -->
 </div>
-
-<hr>
-
-<!-- IF S_MCP_REPORT -->
-	<p><a href="#report" class="top2">{L_BACK_TO_TOP}</a></p>
-<!-- ELSE -->
-	<p><a href="#postingbox" class="top2">{L_BACK_TO_TOP}</a></p>
-<!-- ENDIF -->

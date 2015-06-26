@@ -1,35 +1,64 @@
 <!-- INCLUDE ucp_header.html -->
 
 <h2>{L_TITLE}</h2>
+<div class="inner">
 <p>{L_UCP_WELCOME}</p>
-
 
 <!-- IF .topicrow -->
 <div class="panel">
-	<header><h3>{L_IMPORTANT_NEWS}</h3></header>
-	<div class="inner">
-	<ul class="topiclist cplist">
+	<header><h4>{L_IMPORTANT_NEWS}</h4></header>
+	<ul class="topiclist cplist two-long-columns">
 	<!-- BEGIN topicrow -->
-		<li class="row<!-- IF topicrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
-			<dl class="icon" style="background-image: url({topicrow.TOPIC_FOLDER_IMG_SRC}); background-repeat: no-repeat;">
+		<li class="row">
+			<dl class="icon {topicrow.TOPIC_IMG_STYLE}">
 				<dt <!-- IF topicrow.TOPIC_ICON_IMG -->style="background-image: url({T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}); background-repeat: no-repeat;"<!-- ENDIF -->>
-					<!-- IF topicrow.S_UNREAD --><a href="{topicrow.U_NEWEST_POST}">{NEWEST_POST_IMG}</a> <!-- ENDIF --><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a><br>
-					<!-- IF topicrow.PAGINATION --><strong class="pagination"><span>{topicrow.PAGINATION}</span></strong><!-- ENDIF -->
-					<!-- IF topicrow.ATTACH_ICON_IMG -->{topicrow.ATTACH_ICON_IMG} <!-- ENDIF -->{L_POST_BY_AUTHOR} {topicrow.TOPIC_AUTHOR_FULL} &raquo; {topicrow.FIRST_POST_TIME}
+					<!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}" class="icon-link"></a><!-- ENDIF -->
+					<!-- IF not S_IS_BOT -->
+						<!-- IF topicrow.S_UNREAD_TOPIC -->
+							<a href="{topicrow.U_NEWEST_POST}" class="icon-link"></a>
+						<!-- ELSE -->
+							<a href="{topicrow.U_LAST_POST}" class="icon-link"></a>
+						<!-- ENDIF -->
+					<!-- ENDIF -->
+					<div class="list-inner">
+						<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a><br>
+						<!-- IF .topicrow.pagination -->
+						<div class="pagination">
+							<ul>
+							<!-- BEGIN pagination -->
+								<!-- IF topicrow.pagination.S_IS_PREV -->
+								<!-- ELSEIF topicrow.pagination.S_IS_CURRENT --><li class="active"><span>{topicrow.pagination.PAGE_NUMBER}</span>
+								<!-- ELSEIF topicrow.pagination.S_IS_ELLIPSIS --><li class="ellipsis"><span>{L_ELLIPSIS}</span>
+								<!-- ELSEIF topicrow.pagination.S_IS_NEXT -->
+								<!-- ELSE --><li><a href="{topicrow.pagination.PAGE_URL}">{topicrow.pagination.PAGE_NUMBER}</a>
+								<!-- ENDIF -->
+							<!-- END pagination -->
+							</ul>
+						</div>
+						<!-- ENDIF -->
+						<div class="responsive-hide">
+							<!-- IF topicrow.ATTACH_ICON_IMG --><i class="fa fa-paperclip" title="Attachment(s)"></i><!-- ENDIF -->
+							{L_POST_BY_AUTHOR} {topicrow.TOPIC_AUTHOR_FULL} &raquo; {topicrow.FIRST_POST_TIME}
+						</div>
+						<div class="responsive-show" style="display: none;">
+							<!-- IF topicrow.ATTACH_ICON_IMG --><i class="fa fa-paperclip" title="Attachment(s)"></i><!-- ENDIF -->
+							{L_LAST_POST} {L_POST_BY_AUTHOR} {topicrow.LAST_POST_AUTHOR_FULL} &laquo; <a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{topicrow.LAST_POST_TIME}</a>
+						</div>
+					</div>
 				</dt>
 				<dd class="lastpost"><span>{L_LAST_POST} {L_POST_BY_AUTHOR} {topicrow.LAST_POST_AUTHOR_FULL}
-					<a href="{topicrow.U_LAST_POST}"><i class="fa fa-arrow-right"></i><i class="fa fa-file"></i></a>&nbsp;&nbsp;<br>{topicrow.LAST_POST_TIME}</span>
+					<a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}"><i class="fa fa-arrow-right"></i><i class="fa fa-file"></i></a> <br>{topicrow.LAST_POST_TIME}</span>
 				</dd>
 			</dl>
 		</li>
+
 	<!-- END topicrow -->
 	</ul>
-	</div>
 </div>
 <!-- ENDIF -->
 
 <div class="panel">
-	<header><h3>{L_YOUR_DETAILS}</h3></header>
+	<header><h4>{L_YOUR_DETAILS}</h4></header>
 	<div class="inner" style="overflow:auto;">
 	<dl class="details">
 		<dt>{L_JOINED}{L_COLON}</dt> <dd>{JOINED}</dd>
@@ -40,5 +69,6 @@
 		<!-- IF WARNINGS --><dt>{L_YOUR_WARNINGS}:</dt> <dd class="error">{WARNING_IMG} [{WARNINGS}]</dd><!-- ENDIF -->
 	</dl>
 	</div>
+</div>
 </div>
 <!-- INCLUDE ucp_footer.html -->

@@ -3,23 +3,21 @@
 <h1>{L_FAQ_TITLE}</h1>
 
 <div class="panel" id="faqlinks">
-	<div class="inner">
-		<div class="column1">
-		<!-- BEGIN faq_block -->
-			<!-- IF faq_block.SWITCH_COLUMN or (SWITCH_COLUMN_MANUALLY and faq_block.S_ROW_COUNT == 4) -->
-				</div>
+	<div class="column1">
+	<!-- BEGIN faq_block -->
+		<!-- IF faq_block.SWITCH_COLUMN or (SWITCH_COLUMN_MANUALLY and faq_block.S_ROW_COUNT == 4) -->
+			</div>
 
-				<div class="column2">
-			<!-- ENDIF -->
+			<div class="column2">
+		<!-- ENDIF -->
 
-			<dl class="faq">
-				<dt><strong>{faq_block.BLOCK_TITLE}</strong></dt>
-				<!-- BEGIN faq_row -->
-					<dd><a href="#f{faq_block.S_ROW_COUNT}r{faq_block.faq_row.S_ROW_COUNT}">{faq_block.faq_row.FAQ_QUESTION}</a></dd>
-				<!-- END faq_row -->
-			</dl>
-		<!-- END faq_block -->
-		</div>
+		<dl class="faq">
+			<dt><strong>{faq_block.BLOCK_TITLE}</strong></dt>
+			<!-- BEGIN faq_row -->
+				<dd><a href="#f{faq_block.S_ROW_COUNT}r{faq_block.faq_row.S_ROW_COUNT}">{faq_block.faq_row.FAQ_QUESTION}</a></dd>
+			<!-- END faq_row -->
+		</dl>
+	<!-- END faq_block -->
 	</div>
 </div>
 
@@ -27,9 +25,9 @@
 
 <!-- BEGIN faq_block -->
 	<div class="panel">
+		<header><h3>{faq_block.BLOCK_TITLE}</h3></header>
 		<div class="inner">
 		<div class="content">
-			<header><h3>{faq_block.BLOCK_TITLE}</h3></header>
 			<!-- BEGIN faq_row -->
 				<dl class="faq">
 					<dt id="f{faq_block.S_ROW_COUNT}r{faq_block.faq_row.S_ROW_COUNT}"><strong>{faq_block.faq_row.FAQ_QUESTION}</strong></dt>

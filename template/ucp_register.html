@@ -16,11 +16,9 @@
 
 <div class="panel">
 	<header><h4>{SITENAME} - {L_REGISTRATION}</h4></header>
-	<!-- IF L_REG_COND -->
-		<p>{L_REG_COND}</p>
-	<!-- ENDIF -->
-	<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
 	<div class="inner">
+	<!-- IF L_REG_COND --><p>{L_REG_COND}</p><!-- ENDIF -->
+	<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
 	<fieldset class="fields2">
 	<!-- EVENT ucp_register_credentials_before -->
 	<dl>

@@ -9,22 +9,14 @@
 
 
 <div id="post-{MESSAGE_ID}" class="post pm<!-- IF S_POST_UNAPPROVED or S_POST_REPORTED --> reported<!-- ENDIF --><!-- IF S_ONLINE --> online<!-- ENDIF -->">
-
-
-
-<div class="inner">
-
-
-
 	<dl class="postprofile" id="profile{MESSAGE_ID}">
 		<dt>{MESSAGE_AUTHOR_FULL}</dt>
 		<!-- IF AUTHOR_AVATAR --><dd class="profile-avatar"><a href="{U_MESSAGE_AUTHOR}">{AUTHOR_AVATAR}</a></dd><!-- ENDIF -->
 		<!-- IF RANK_TITLE --><dd>{RANK_TITLE}</dd><!-- ENDIF -->
 		<!-- IF RANK_IMG --><dd>{RANK_IMG}</dd><!-- ENDIF -->
 
-		<dd><strong>{L_POSTS}{L_COLON}</strong> {AUTHOR_POSTS}</dd>
-		<!-- IF AUTHOR_JOINED --><dd><strong>{L_JOINED}{L_COLON}</strong> {AUTHOR_JOINED}</dd><!-- ENDIF -->
-		<!-- IF AUTHOR_FROM --><dd><strong>{L_LOCATION}{L_COLON}</strong> {AUTHOR_FROM}</dd><!-- ENDIF -->
+		<!-- IF AUTHOR_JOINED --><dd><i class="fa fa-user" title="Joined"></i>&nbsp;{AUTHOR_JOINED}</dd><!-- ENDIF -->
+		<!-- IF AUTHOR_FROM --><dd><i class="fa fa-map-marker" title="Location"></i>&nbsp;{AUTHOR_FROM}</dd><!-- ENDIF -->
 		
 		<!-- IF U_PM or U_EMAIL or U_WWW or U_MSN or U_ICQ or U_YIM or U_AIM or U_JABBER -->
 		<dd>
@@ -41,15 +33,12 @@
 		</dd>
 		<!-- ENDIF -->
 	</dl>
-	
-	
-	
+
 	<div class="postbody">
 		<header class="postheader">
 			<span class="postdate"><i class="fa fa-comment"></i>&nbsp;{SENT_DATE}</span>
 		</header>
 		<div class=subject><h2 class="first">{SUBJECT}</h2></div>
-
 		<p class="author">
 			<strong>{L_PM_FROM}{L_COLON}</strong> {MESSAGE_AUTHOR_FULL}
 			<!-- IF S_TO_RECIPIENT --><br><strong>{L_TO}{L_COLON}</strong> <!-- BEGIN to_recipient --><!-- IF to_recipient.NAME_FULL -->{to_recipient.NAME_FULL}<!-- ELSE --><a href="{to_recipient.U_VIEW}" style="color:<!-- IF to_recipient.COLOUR -->{to_recipient.COLOUR}<!-- ELSEIF to_recipient.IS_GROUP -->#0000FF<!-- ENDIF -->;">{to_recipient.NAME}</a><!-- ENDIF -->&nbsp;<!-- END to_recipient --><!-- ENDIF -->
@@ -82,22 +71,17 @@
 		<div class="clear"></div>
 		<!-- IF U_DELETE or U_EDIT or U_QUOTE or U_REPORT -->
 		<div class="profile-icons">
-		<ul>
+		<ul class="postbuttons">
 			<!-- EVENT ucp_pm_viewmessage_post_buttons_before -->
-			<!-- IF U_EDIT --><li class="edit-icon"><a href="{U_EDIT}" title="{L_POST_EDIT_PM}"><span><i class="fa fa-pencil"></i>&nbsp;{L_POST_EDIT_PM}</span></a><!-- ENDIF -->
-			<!-- IF U_DELETE --><li class="delete-icon"><a href="{U_DELETE}" title="{L_DELETE_MESSAGE}"><span><i class="fa fa-times"></i>&nbsp;{L_DELETE_MESSAGE}</span></a><!-- ENDIF -->
-			<!-- IF U_REPORT --><li class="report-icon"><a href="{U_REPORT}" title="{L_REPORT_PM}"><span><i class="fa fa-exclamation-triangle"></i>&nbsp;{L_REPORT_PM}</span></a><!-- ENDIF -->
-			<!-- IF U_QUOTE --><li class="quote-icon"><a href="{U_QUOTE}" title="{L_POST_QUOTE_PM}"><span><i class="fa fa-quote-left"></i>&nbsp;{L_POST_QUOTE_PM}</span></a><!-- ENDIF -->
+			<!-- IF U_EDIT --><li class="edit-icon"><a href="{U_EDIT}" title="{L_POST_EDIT_PM}"><span><i class="fa fa-pencil"></i></span></a><!-- ENDIF -->
+			<!-- IF U_DELETE --><li class="delete-icon"><a href="{U_DELETE}" title="{L_DELETE_MESSAGE}"><span><i class="fa fa-trash"></i></span></a><!-- ENDIF -->
+			<!-- IF U_REPORT --><li class="report-icon"><a href="{U_REPORT}" title="{L_REPORT_PM}"><span><i class="fa fa-exclamation-triangle"></i></span></a><!-- ENDIF -->
+			<!-- IF U_QUOTE --><li class="quote-icon"><a href="{U_QUOTE}" title="{L_POST_QUOTE_PM}"><span><i class="fa fa-quote-left"></i></span></a><!-- ENDIF -->
 			<!-- EVENT ucp_pm_viewmessage_post_buttons_after -->
 		</ul>
 		</div>
 		<!-- ENDIF -->
 	</div>
-
-
-
-	</div>
-
 </div>
 
 <!-- IF S_VIEW_MESSAGE -->
@@ -105,7 +89,7 @@
 	<!-- IF U_PREVIOUS_PM --><a href="{U_PREVIOUS_PM}" class="button2 left-box {S_CONTENT_FLOW_BEGIN}"><i class="fa fa-arrow-left"></i>&nbsp;{L_VIEW_PREVIOUS_PM}</a><!-- ENDIF -->
 	<!-- IF U_NEXT_PM --><a href="{U_NEXT_PM}" class="button2 right-box {S_CONTENT_FLOW_END}">{L_VIEW_NEXT_PM}&nbsp;<i class="fa fa-arrow-right"></i></a><!-- ENDIF -->
 
-	<!-- IF S_MARK_OPTIONS --><label for="mark_option"><select name="mark_option" id="mark_option">{S_MARK_OPTIONS}</select></label>&nbsp;<input class="button2" type="submit" name="submit_mark" value="{L_GO}" /><!-- ENDIF -->
+	<!-- IF S_MARK_OPTIONS --><label for="mark_option"><select name="mark_option" id="mark_option">{S_MARK_OPTIONS}</select></label>&nbsp;<input class="button2" type="submit" name="submit_mark" value="{L_GO}"><!-- ENDIF -->
 	<!-- IF not S_UNREAD and not S_SPECIAL_FOLDER --><label for="dest_folder"><!-- IF S_VIEW_MESSAGE -->{L_MOVE_TO_FOLDER}{L_COLON} <!-- ELSE -->{L_MOVE_MARKED_TO_FOLDER}<!-- ENDIF --> <select name="dest_folder" id="dest_folder">{S_TO_FOLDER_OPTIONS}</select></label> <input class="button2" type="submit" name="move_pm" value="{L_GO}"><!-- ENDIF -->
 	<input type="hidden" name="marked_msg_id[]" value="{MSG_ID}">
 	<input type="hidden" name="cur_folder_id" value="{CUR_FOLDER_ID}">

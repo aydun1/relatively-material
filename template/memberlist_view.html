@@ -18,7 +18,7 @@
 		</dl>
 	<!-- ENDIF -->
 
-	<dl class="left-box details">
+	<dl class="left-box details profile-details">
 		<dt>{L_USERNAME}:</dt>
 		<dd>
 			<!-- IF USER_COLOR --><span style="color: {USER_COLOR}; font-weight: bold;"><!-- ELSE --><span><!-- ENDIF -->{USERNAME}</span>
@@ -54,11 +54,11 @@
 	</dl>
 
 	</div>
+	<div class="clear"></div>
 </div>
 
 <!-- EVENT memberlist_view_contact_before -->
 <div class="panel bg2">
-	<div class="inner">
 	<div class="column1">
 
 		<header><h3>{L_CONTACT_USER}</h3></header>
@@ -106,22 +106,16 @@
 			<!-- EVENT memberlist_view_user_statistics_after -->
 		</dl>
 	</div>
-	</div>
+	<div class="clear"></div>
 </div>
 <!-- EVENT memberlist_view_contact_after -->
 
 <!-- IF SIGNATURE -->
 <div class="panel bg1">
-	<div class="inner">
-
-		<header><h3>{L_SIGNATURE}</h3></header>
-
-		<div class="postbody" style="box-shadow:none"><div class="signature" style="border-top:none;">{SIGNATURE}</div></div>
-
-	</div>
+	<header><h3>{L_SIGNATURE}</h3></header>
+	<div class="postbody" style="box-shadow:none"><div class="signature" style="border-top:none;">{SIGNATURE}</div></div>
 </div>
 <!-- ENDIF -->
-<!-- INCLUDE memberlist_view_thanks.html -->
 </form>
 
 
