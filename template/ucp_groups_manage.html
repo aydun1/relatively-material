@@ -1,7 +1,8 @@
 <!-- INCLUDE ucp_header.html -->
 
 <h2<!-- IF GROUP_COLOR --> style="color:#{GROUP_COLOR};"<!-- ENDIF -->>{L_USERGROUPS}<!-- IF GROUP_NAME --> :: {GROUP_NAME}<!-- ENDIF --></h2>
-<p>{L_GROUPS_EXPLAIN}</p>
+<div class="inner">
+	<p>{L_GROUPS_EXPLAIN}</p>
 <form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
 
 <!-- IF S_ERROR -->
@@ -11,12 +12,10 @@
 <!-- ENDIF -->
 
 <div class="panel">
-	<div class="inner">
-
 
 <!-- IF S_EDIT -->
 		<header><h3>{L_GROUP_DETAILS}</h3></header>
-
+		<div class="inner">
 		<fieldset>
 		<dl>
 			<dt><label for="group_name">{L_GROUP_NAME}{L_COLON}</label></dt>
@@ -42,8 +41,8 @@
 			<input name="group_type" type="hidden" value="{GROUP_TYPE_SPECIAL}">
 		<!-- ENDIF -->
 		</fieldset>
+		</div>
 
-	</div>
 </div>
 
 <div class="panel">
@@ -165,7 +164,6 @@
 		</li>
 	</ul>
 
-	</div>
 </div>
 
 <fieldset class="display-actions">	
@@ -235,9 +233,9 @@
 		<p><strong>{L_NO_LEADERS}</strong></p>
 	<!-- ENDIF -->
 
-	</div>
 </div>
 
 <!-- ENDIF -->
-</form> 
+</form>
+</div>
 <!-- INCLUDE ucp_footer.html -->
