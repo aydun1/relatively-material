@@ -1,0 +1,41 @@
+<!-- INCLUDE overall_header.html -->
+<h1>Merchandise</h1>
+<!-- IF S_USER_LOGGED_IN and not S_IS_BOT -->
+
+
+<div class="store-card">
+	<h3>UEGA T-Shirt</h3>
+	<hr>
+	<img class="product-icon" alt="T-Shirt logo" src="images/I96vqDB.jpg">
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="on1" value="User">
+		<input type="hidden" name="os1" value="{S_USERNAME}">
+		<input type="hidden" name="on0" value="Size">Size<select name="os0">
+			<option value="M">M </option>
+			<option value="L">L </option>
+			<option value="XL">XL </option>
+		</select>
+			<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+			<input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+			<img style="display:none;" alt="" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+	</form>
+</div>
+
+
+
+<!-- ENDIF -->
+<!-- BEGIN announcements -->
+Title: {announcements.TOPIC_TITLE}<br>
+Author: {announcements.TOPIC_AUTHOR}<br>
+Date: {announcements.TOPIC_DATE}<br>
+Last post: {announcements.TOPIC_LAST_POST}<br>
+Topic link: {announcements.TOPIC_LINK}<br><br><br>
+<!-- END announcements -->
+
+
+
+
+
+<!-- INCLUDE overall_footer.html -->
