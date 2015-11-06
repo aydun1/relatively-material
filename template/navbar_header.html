@@ -3,19 +3,15 @@
 	<div class="breadcrumbs" role="menubar">
 		<!-- DEFINE $MICRODATA = ' itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"' -->
 		<!-- EVENT overall_header_breadcrumbs_before -->
-			<!-- IF U_SITE_HOME --><span><a class="crumb" href="{U_SITE_HOME}"{$MICRODATA} data-navbar-reference="home">{L_SITE_HOME}</a></span><!-- ENDIF -->
+			<!-- IF U_SITE_HOME --><span><a href="{U_SITE_HOME}"{$MICRODATA} data-navbar-reference="home">{L_SITE_HOME}</a></span><!-- ENDIF -->
 			<!-- EVENT overall_header_breadcrumb_prepend -->
-			<div id="active-home"{$MICRODATA}>
-				<a class="crumb" href="{U_INDEX}" accesskey="h" data-navbar-reference="index" itemprop="url">
-					<span itemprop="title">{L_INDEX}</span>
-				</a>
+			<div id="active-home" class="crumb"{$MICRODATA}>
+				<a href="{U_INDEX}" accesskey="h" data-navbar-reference="index" itemprop="url"><span itemprop="title">{L_INDEX}</span></a>
 			</div>
 			<!-- BEGIN navlinks -->
 				<!-- EVENT overall_header_navlink_prepend -->
-				<div{$MICRODATA} itemprop="child">
-					<a class="crumb" href="{navlinks.U_VIEW_FORUM}" <!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF --> itemprop="url">
-						<span itemprop="title">{navlinks.FORUM_NAME}</span>
-					</a>
+				<div class="crumb"{$MICRODATA} itemprop="child">
+					<a href="{navlinks.U_VIEW_FORUM}" <!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF --> itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a>
 				</div>
 				<!-- EVENT overall_header_navlink_append -->
 			<!-- END navlinks -->
@@ -41,7 +37,7 @@
 			<li><a href="{U_SEARCH_UNANSWERED}" role="menuitem">{L_SEARCH_UNANSWERED}</a>
 			<li><a href="{U_SEARCH_ACTIVE_TOPICS}" role="menuitem">{L_SEARCH_ACTIVE_TOPICS}</a>
 			<li class="separator">
-			<li><a id="active-faq" href="{U_FAQ}"><i class="fa fa-question"></i>{L_FAQ}</a>
+			<li><a id="active-faq" href="{U_FAQ}" rel="help" title="{L_FAQ_EXPLAIN}"><i class="fa fa-question"></i>{L_FAQ}</a>
 			<!-- IF U_MCP --><li><a href="{U_MCP}" title="{L_MCP}" role="menuitem"><i class="fa fa-gavel"></i>{L_MCP_SHORT}</a></li><!-- ENDIF -->
 			<!-- IF U_ACP --><li><a href="{U_ACP}" title="{L_ACP}" role="menuitem"><i class="fa fa-cogs"></i>{L_ACP_SHORT}</a></li><!-- ENDIF -->
 
@@ -68,7 +64,7 @@
 			<!-- EVENT navbar_header_username_append -->
 		</li>
 	<!-- ELSE -->
-		<li><a id="active-faq" href="{U_FAQ}">{L_FAQ}</a>
+		<li><a id="active-faq" href="{U_FAQ}" rel="help" title="{L_FAQ_EXPLAIN}">{L_FAQ}</a>
 		<li><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">{L_LOGIN_LOGOUT}</a></li>
 		<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
 			<li><a href="{U_REGISTER}">{L_REGISTER}</a>

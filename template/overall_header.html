@@ -1,66 +1,70 @@
 <!DOCTYPE html>
 <html lang="{S_USER_LANG}">
 <head>
-	<title><!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta charset="{S_CONTENT_ENCODING}">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Urban Exploration Group Australia is a forum for those with an interest in 'urbex'. Share your adventures, check out photos & write-ups, and chat with others who share your interest!">
-	<link rel="search" type="application/opensearchdescription+xml" title="UEGA" href="/opensearch.xml">
-	
-	<!-- Apple icons -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-title" content="UEGA">
-	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+<title><!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="{S_CONTENT_ENCODING}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Urban Exploration Group Australia is a forum for those with an interest in 'urbex'. Share your adventures, check out photos & write-ups, and chat with others who share your interest!">
+<!-- IF U_CANONICAL --><link rel="canonical" href="{U_CANONICAL}"><!-- ENDIF -->
+<link rel="manifest" href="/manifest.json">
+<link rel="search" type="application/opensearchdescription+xml" title="UEGA" href="/opensearch.xml">
 
-	<!-- Android and generic icons -->
-	<link rel="manifest" href="/manifest.json">
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="theme-color" content="#2049B0">
-	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
-	<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+<meta property="fb:admins" content="647037983">
+<meta property="og:title" content="{PAGE_TITLE}">
+<meta property="og:site_name" content="{SITENAME}">
+<!-- IF U_CANONICAL --><meta property="og:url" content="{U_CANONICAL}"><!-- ENDIF -->
 
-	<!-- Microsoft icons -->
-	<meta name="application-name" content="UEGA">
-	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<!-- Apple icons -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="UEGA">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
 
-	{META}
-	<!--
-		phpBB style name: UEGA-responsive
-		Based on style:   prosilver (this is the default phpBB3 style)
-		Original author:  Tom Beddard ( http://www.subBlue.com/ )
-		Modified by: Aydun
-	-->
+<!-- Android and generic icons -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#2049B0">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
 
-	<link href="https://uega.net/forums/styles/uega-responsive/theme/print.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="print" title="printonly">
-	<link href="https://uega.net/forums/styles/uega-responsive/theme/stylesheet.css?assets_version={T_ASSETS_VERSION}1" rel="stylesheet" media="screen, projection">
-	<link href="https://uega.net/forums/styles/uega-responsive/theme/responsive.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="only screen and (max-width: 770px), only screen and (max-device-width: 770px)">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<!-- IF U_CANONICAL --><link rel="canonical" href="{U_CANONICAL}"><!-- ENDIF -->
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!-- Microsoft icons -->
+<meta name="application-name" content="UEGA">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
-		ga('create', 'UA-20672109-6', {
-		  'cookieDomain': 'www.uega.net'	
-		});
-		ga('require', 'displayfeatures');
-		ga('send', 'pageview');
-	</script>
+<!--
+	phpBB style name: UEGA-responsive
+	Based on style:   prosilver (this is the default phpBB3 style)
+	Original author:  Tom Beddard ( http://www.subBlue.com/ )
+	Modified by: Aydun
+-->
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-20672109-6', {
+	'cookieDomain': 'www.uega.net'
+	});
+	ga('require', 'displayfeatures');
+	ga('send', 'pageview');
+</script>
+
+<link href="https://uega.net/forums/styles/uega-responsive/theme/stylesheet.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
+<link href="https://uega.net/forums/styles/uega-responsive/theme/responsive.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="all and (max-width: 770px), all and (max-device-width: 770px)">
+<link href="https://uega.net/forums/styles/uega-responsive/theme/print.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="print" title="printonly">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300%7COpen+Sans:600&subset=cyrillic-ext,latin,greek-ext,greek,vietnamese,latin-ext,cyrillic" rel="stylesheet">
+<!-- EVENT overall_header_head_append -->
+<!-- {$STYLESHEETS} -->
+<!-- EVENT overall_header_stylesheets_after -->
 
 </head>
 
